@@ -12,7 +12,9 @@ dependencies = [
 requires-python = ">=3.8"
 license = {text = "MIT"}
 
-[tool.pdm]
+[tool.pdm.scripts]
+db-create = {call = "gymtime.database.create:main"}
+db-seed = {call = "gymtime.database.seed:main"}
 
 [build-system]
 requires = ["pdm-pep517>=1.0.0"]
