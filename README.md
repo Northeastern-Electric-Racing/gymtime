@@ -3,13 +3,13 @@
 ### Create database
 
 ```bash
-pdm run python -m gymtime.database.create
+pdm run db-create
 ```
 
 ### Seed
 
 ```bash
-pdm run python -m gymtime.database.seed
+pdm run db-seed
 ```
 
 > **Warning**
