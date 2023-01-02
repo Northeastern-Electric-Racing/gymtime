@@ -11,6 +11,7 @@ class Gym(SQLModel, table=True):
 
     sections: List["Section"] = Relationship(back_populates="gym")
 
+
 class Section(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     slug: str
@@ -20,11 +21,13 @@ class Section(SQLModel, table=True):
     gym_id: Optional[int] = Field(default=None, foreign_key="gym.id")
     gym: Optional[Gym] = Relationship(back_populates="sections")
 
+    records: List["Record"] = Relationship(back_populates="section")
 
-# class Record(SQLModel, table=True):
-#     id: Optional[int] = Field(default=None, primary_key=True)
-#     time: datetime
-#     count: int  
 
-#     section_id: Optional[int] = Field(default=None, foreign_key="section.id")
-#     section: Optional[Section] = Relationship(back_populates="sections")
+class Record(SQLModel, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
+    time: datetime
+    count: int
+
+    section_id: Optional[int] = Field(default=None, foreign_key="section.id")
+    section: Optional[Section] = Relationship(back_populates="records")
