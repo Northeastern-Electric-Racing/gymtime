@@ -48,6 +48,7 @@ def main():
         session.commit()
 
         # Sample records
+        # Sunday
         marino_track_day1_0500 = Record(
             time=datetime(year=2023, month=1, day=1, hour=5, minute=0),
             count=6,
@@ -74,6 +75,7 @@ def main():
             section_id=marino_track.id,
         )
 
+        # Monday
         marino_track_day2_0500 = Record(
             time=datetime(year=2023, month=1, day=2, hour=5, minute=0),
             count=3,
@@ -99,6 +101,41 @@ def main():
             count=5,
             section_id=marino_track.id,
         )
+
+        # Sunday
+        marino_track_day8_0500 = Record(
+            time=datetime(year=2023, month=1, day=8, hour=5, minute=0),
+            count=5,
+            section_id=marino_track.id,
+        )
+        marino_track_day8_0530 = Record(
+            time=datetime(year=2023, month=1, day=8, hour=5, minute=30),
+            count=5,
+            section_id=marino_track.id,
+        )
+        marino_track_day8_0600 = Record(
+            time=datetime(year=2023, month=1, day=8, hour=6, minute=0),
+            count=6,
+            section_id=marino_track.id,
+        )
+
+        # Monday
+        marino_track_day9_0500 = Record(
+            time=datetime(year=2023, month=1, day=9, hour=5, minute=0),
+            count=8,
+            section_id=marino_track.id,
+        )
+        marino_track_day9_0530 = Record(
+            time=datetime(year=2023, month=1, day=9, hour=5, minute=30),
+            count=9,
+            section_id=marino_track.id,
+        )
+        marino_track_day9_0600 = Record(
+            time=datetime(year=2023, month=1, day=9, hour=6, minute=0),
+            count=8,
+            section_id=marino_track.id,
+        )
+
         session.add(marino_track_day1_0500)
         session.add(marino_track_day1_0530)
         session.add(marino_track_day1_0600)
@@ -109,4 +146,10 @@ def main():
         session.add(marino_track_day2_0600)
         session.add(marino_track_day2_0630)
         session.add(marino_track_day2_0700)
+        session.add(marino_track_day8_0500)
+        session.add(marino_track_day8_0530)
+        session.add(marino_track_day8_0600)
+        session.add(marino_track_day9_0500)
+        session.add(marino_track_day9_0530)
+        session.add(marino_track_day9_0600)
         session.commit()
