@@ -1,7 +1,7 @@
 from datetime import datetime
 from sqlmodel import Session, select
-from database.db import engine
-from database.models import Record
+from ..database.db import engine
+from ..database.models import Record
 
 
 def fetch_records(section_id: int, from_date: datetime, to_date: datetime):
