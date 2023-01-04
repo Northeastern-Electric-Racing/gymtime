@@ -30,7 +30,6 @@ def test_fetch_records(marino_track: Section):
         from_date=datetime(year=2023, month=1, day=1),
         to_date=datetime(year=2023, month=1, day=1),
     )
-
     assert records_day1[0].count == 6
     assert records_day1[1].count == 7
 
@@ -39,9 +38,24 @@ def test_fetch_records(marino_track: Section):
         from_date=datetime(year=2023, month=1, day=2),
         to_date=datetime(year=2023, month=1, day=2),
     )
-
     assert records_day2[0].count == 3
     assert records_day2[1].count == 10
+
+    records_day8 = fetch_records(
+        section_id=marino_track.id,
+        from_date=datetime(year=2023, month=1, day=8),
+        to_date=datetime(year=2023, month=1, day=8),
+    )
+    assert records_day8[0].count == 5
+    assert records_day8[1].count == 5
+    assert records_day8[2].count == 6
+
+    records_day9 = fetch_records(
+        section_id=marino_track.id,
+        from_date=datetime(year=2023, month=1, day=9),
+        to_date=datetime(year=2023, month=1, day=9),
+    )
+    assert records_day9[2].count == 8
 
 
 def test_fetch_average_for_time(marino_track: Section):
