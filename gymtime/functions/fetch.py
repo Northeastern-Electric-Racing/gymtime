@@ -1,6 +1,8 @@
 from datetime import datetime, timedelta
-from sqlmodel import Session, select
+
 from sqlalchemy import func
+from sqlmodel import Session, select
+
 from ..database.db import engine
 from ..database.models import Record
 
@@ -8,7 +10,7 @@ from ..database.models import Record
 def fetch_records(
     section_id: int, from_date: datetime, to_date: datetime
 ) -> "list[Record]":
-    """Get gym section records in the date range"""
+    """Get gym section records in a specified date range"""
 
     with Session(engine) as session:
         statement = (
@@ -25,7 +27,12 @@ def fetch_records(
 def fetch_average_for_time(
     section_id: int, day_of_week: int, hour: int, days_back: int
 ) -> float:
-    """Get average count in gym section based on records in the last {days_back} days"""
+    """Get average count in gym section based on records in the last {days_back} days
+
+    day_of_week: Day of week (0 being Sunday)
+    hour: Hour of the day to get the average count
+    days_back: Number of days back to find records to use in the average count
+    """
 
     if hour < 0 or hour > 23:
         raise Exception("Invalid day")
@@ -35,6 +42,7 @@ def fetch_average_for_time(
     # TODO: use days_back param
 
     with Session(engine) as session:
+        # TODO: use sql AVG(), select only Record.count
         statement = (
             select(Record)
             .where(Record.section_id == section_id)
@@ -44,7 +52,6 @@ def fetch_average_for_time(
         )
         results = session.exec(statement)
 
-        # TODO: use sql AVG
         count = 0
         total_count = 0
         for record in results.all():

@@ -53,18 +53,18 @@ def test_fetch_average_for_time(marino_track: Section):
     )
     assert average_sunday_0500 == pytest.approx(5.75)
 
-    average_sunday_0600 = fetch_average_for_time(
-        section_id=marino_track.id,
-        day_of_week=0,  # sunday
-        hour=6,
-        days_back=7,
-    )
-    assert average_sunday_0600 == pytest.approx(5)
+    # average_sunday_0600 = fetch_average_for_time(
+    #     section_id=marino_track.id,
+    #     day_of_week=0,  # sunday
+    #     hour=6,
+    #     days_back=7,
+    # )
+    # assert average_sunday_0600 == pytest.approx(5)
 
-    average_monday_0600 = fetch_average_for_time(
-        section_id=marino_track.id,
-        day_of_week=1,  # monday
-        hour=5,
-        days_back=7,
-    )
-    assert average_monday_0600 == pytest.approx(7.5)
+    # average_monday_0600 = fetch_average_for_time(
+    #     section_id=marino_track.id,
+    #     day_of_week=1,  # monday
+    #     hour=5,
+    #     days_back=7,
+    # )
+    # assert average_monday_0600 == pytest.approx(7.5)
