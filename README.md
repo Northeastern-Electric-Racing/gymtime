@@ -9,12 +9,12 @@ pdm run db-create
 ### Seed
 
 ```bash
-pdm run db-test-drop-all
-pdm run db-test-seed
+pdm run db-dev-drop-all
+pdm run db-dev-seed
 ```
 
 > **Warning**
-> Running `pdm run db-drop-all` will delete all rows in the database.
+> Running `pdm run db-dev-drop-all` will delete all rows in the database.
 
 ## Tests
 

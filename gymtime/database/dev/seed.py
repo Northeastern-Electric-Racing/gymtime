@@ -1,5 +1,5 @@
-from .models import Gym, Section, Record
-from .db import engine
+from ..models import Gym, Section, Record
+from ..db import engine
 from sqlmodel import Session, select
 from datetime import datetime
 
@@ -24,6 +24,7 @@ def main():
             short_name="weight",
             gym_id=marino.id,
             c2c_name="Marino Center - 3rd Floor Weight Room",
+            description="",  # not needed for testing
         )
         marino_track = Section(
             slug="track",
@@ -31,6 +32,7 @@ def main():
             short_name="track",
             gym_id=marino.id,
             c2c_name="Marino Center - Track",
+            description="",
         )
         session.add(marino_weight_room)
         session.add(marino_track)
@@ -41,6 +43,7 @@ def main():
             short_name="four",
             gym_id=squash.id,
             c2c_name="SquashBusters - 4th Floor",
+            description="",
         )
         session.add(squash_floor_four)
         session.commit()

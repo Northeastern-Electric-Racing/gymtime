@@ -17,8 +17,8 @@ license = {text = "MIT"}
 
 [tool.pdm.scripts]
 db-create = {call = "gymtime.database.create:main"}
-db-test-drop-all = {call = "gymtime.database.drop_all:main"}
-db-test-seed = {call = "gymtime.database.seed:main"}
+db-dev-drop-all = {call = "gymtime.database.dev.drop_all:main"}
+db-dev-seed = {call = "gymtime.database.dev.seed:main"}
 test = "pytest tests -s"
 
 [build-system]

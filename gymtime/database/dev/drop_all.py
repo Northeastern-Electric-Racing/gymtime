@@ -1,7 +1,7 @@
 from sqlmodel import Session, select
 
-from .db import engine
-from .models import Gym, Section, Record
+from ..db import engine
+from ..models import Gym, Section, Record
 
 
 def main():
