@@ -26,6 +26,7 @@ class Section(SQLModel, table=True):
     slug: str
     name: str
     short_name: str
+    c2c_name: str  # Name on Connect2Concepts website
 
     # gym_id: Optional[int] = Field(default=None, foreign_key="gym.id")
     # gym: Optional[Gym] = Relationship(back_populates="sections")

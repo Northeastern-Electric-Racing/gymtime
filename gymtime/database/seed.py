@@ -6,16 +6,11 @@ from datetime import datetime
 
 def main():
     with Session(engine) as session:
-        # Drop all (there's probably a better way to do this)
-        for record in session.exec(select(Record)).all():
-            session.delete(record)
-        for section in session.exec(select(Section)).all():
-            session.delete(section)
-        for gym in session.exec(select(Gym)).all():
-            session.delete(gym)
-        session.commit()
-
-        marino = Gym(slug="marino", name="Marino Center", short_name="Marino")
+        marino = Gym(
+            slug="marino",
+            name="Marino Center",
+            short_name="Marino",
+        )
         squash = Gym(
             slug="squashbusters", name="Squasbusters Center", short_name="Squash"
         )
@@ -28,12 +23,14 @@ def main():
             name="Weight Room",
             short_name="weight",
             gym_id=marino.id,
+            c2c_name="Marino Center - 3rd Floor Weight Room",
         )
         marino_track = Section(
             slug="track",
             name="Track",
             short_name="track",
             gym_id=marino.id,
+            c2c_name="Marino Center - Track",
         )
         session.add(marino_weight_room)
         session.add(marino_track)
@@ -43,6 +40,7 @@ def main():
             name="Flour Four",
             short_name="four",
             gym_id=squash.id,
+            c2c_name="SquashBusters - 4th Floor",
         )
         session.add(squash_floor_four)
         session.commit()
