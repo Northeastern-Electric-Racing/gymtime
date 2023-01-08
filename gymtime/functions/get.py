@@ -7,7 +7,7 @@ from ..database.db import engine
 from ..database.models import Record
 
 
-def fetch_records(
+def get_records(
     section_id: int, from_date: datetime, to_date: datetime
 ) -> "list[Record]":
     """Get gym section records in a specified date range"""
@@ -24,7 +24,7 @@ def fetch_records(
         return results.all()
 
 
-def fetch_average_for_time(
+def get_average_for_time(
     section_id: int, day_of_week: int, hour: int, days_back: int
 ) -> float:
     """Get average count in gym section based on records in the last {days_back} days

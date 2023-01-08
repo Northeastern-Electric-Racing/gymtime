@@ -1,9 +1,11 @@
+from datetime import datetime
+
 import pytest
 from sqlmodel import Session, select
-from datetime import datetime
-from gymtime.functions.fetch import fetch_records, fetch_average_for_time
+
 from gymtime.database.db import engine
 from gymtime.database.models import Gym, Section
+from gymtime.functions.get import get_average_for_time, get_records
 
 
 @pytest.fixture
@@ -25,7 +27,7 @@ def test_init(marino_track: Section):
 
 
 def test_fetch_records(marino_track: Section):
-    records_day1 = fetch_records(
+    records_day1 = get_records(
         section_id=marino_track.id,
         from_date=datetime(year=2023, month=1, day=1),
         to_date=datetime(year=2023, month=1, day=1),
@@ -33,7 +35,7 @@ def test_fetch_records(marino_track: Section):
     assert records_day1[0].count == 6
     assert records_day1[1].count == 7
 
-    records_day2 = fetch_records(
+    records_day2 = get_records(
         section_id=marino_track.id,
         from_date=datetime(year=2023, month=1, day=2),
         to_date=datetime(year=2023, month=1, day=2),
@@ -41,7 +43,7 @@ def test_fetch_records(marino_track: Section):
     assert records_day2[0].count == 3
     assert records_day2[1].count == 10
 
-    records_day8 = fetch_records(
+    records_day8 = get_records(
         section_id=marino_track.id,
         from_date=datetime(year=2023, month=1, day=8),
         to_date=datetime(year=2023, month=1, day=8),
@@ -50,7 +52,7 @@ def test_fetch_records(marino_track: Section):
     assert records_day8[1].count == 5
     assert records_day8[2].count == 6
 
-    records_day9 = fetch_records(
+    records_day9 = get_records(
         section_id=marino_track.id,
         from_date=datetime(year=2023, month=1, day=9),
         to_date=datetime(year=2023, month=1, day=9),
@@ -59,7 +61,7 @@ def test_fetch_records(marino_track: Section):
 
 
 def test_fetch_average_for_time(marino_track: Section):
-    average_sunday_0500 = fetch_average_for_time(
+    average_sunday_0500 = get_average_for_time(
         section_id=marino_track.id,
         day_of_week=0,  # sunday
         hour=5,
