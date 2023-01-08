@@ -6,47 +6,51 @@ from datetime import datetime
 
 def main():
     with Session(engine) as session:
-        marino = Gym(
-            slug="marino",
-            name="Marino Center",
-            short_name="Marino",
-        )
-        squash = Gym(
-            slug="squashbusters", name="Squasbusters Center", short_name="Squash"
-        )
-        session.add(marino)
-        session.add(squash)
-        session.commit()
+        # marino = Gym(
+        #     slug="marino",
+        #     name="Marino Center",
+        #     short_name="Marino",
+        # )
+        # squash = Gym(
+        #     slug="squashbusters", name="Squasbusters Center", short_name="Squash"
+        # )
+        # session.add(marino)
+        # session.add(squash)
+        # session.commit()
 
-        marino_weight_room = Section(
-            slug="weight-room",
-            name="Weight Room",
-            short_name="weight",
-            gym_id=marino.id,
-            c2c_name="Marino Center - 3rd Floor Weight Room",
-            description="",  # not needed for testing
-        )
-        marino_track = Section(
-            slug="track",
-            name="Track",
-            short_name="track",
-            gym_id=marino.id,
-            c2c_name="Marino Center - Track",
-            description="",
-        )
-        session.add(marino_weight_room)
-        session.add(marino_track)
+        # marino_weight_room = Section(
+        #     slug="weight-room",
+        #     name="Weight Room",
+        #     short_name="weight",
+        #     gym_id=marino.id,
+        #     c2c_name="Marino Center - 3rd Floor Weight Room",
+        #     description="",  # not needed for testing
+        # )
+        # marino_track = Section(
+        #     slug="track",
+        #     name="Track",
+        #     short_name="track",
+        #     gym_id=marino.id,
+        #     c2c_name="Marino Center - Track",
+        #     description="",
+        # )
+        # session.add(marino_weight_room)
+        # session.add(marino_track)
 
-        squash_floor_four = Section(
-            slug="floor-four",
-            name="Flour Four",
-            short_name="four",
-            gym_id=squash.id,
-            c2c_name="SquashBusters - 4th Floor",
-            description="",
-        )
-        session.add(squash_floor_four)
-        session.commit()
+        # squash_floor_four = Section(
+        #     slug="floor-four",
+        #     name="Flour Four",
+        #     short_name="four",
+        #     gym_id=squash.id,
+        #     c2c_name="SquashBusters - 4th Floor",
+        #     description="",
+        # )
+        # session.add(squash_floor_four)
+        # session.commit()
+
+        statement_marino_track = select(Section).where(Section.slug == "marino-track")
+        results = session.exec(statement_marino_track)
+        marino_track = results.one()
 
         # Sample records
         # Sunday

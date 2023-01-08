@@ -15,15 +15,15 @@ def marino_track() -> Section:
         track_section = session.exec(
             select(Section)
             .where(Section.gym_id == marino.id)
-            .where(Section.slug == "track")
+            .where(Section.slug == "marino-track")
         ).one()
         return track_section
 
 
 def test_init(marino_track: Section):
     assert marino_track.gym_id == 1
-    assert marino_track.slug == "track"
-    assert marino_track.name == "Track"
+    assert marino_track.slug == "marino-track"
+    assert marino_track.name == "Marino Track"
 
 
 def test_fetch_records(marino_track: Section):
