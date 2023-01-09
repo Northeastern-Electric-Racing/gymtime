@@ -79,5 +79,6 @@ def main():
             description="Fourth Floor",
             c2c_name="SquashBusters - 4th Floor",
         )
+        session.add(squash_flour_four)
 
         session.commit()

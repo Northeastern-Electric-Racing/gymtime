@@ -57,26 +57,31 @@ def main():
         marino_track_day1_0500 = Record(
             time=datetime(year=2023, month=1, day=1, hour=5, minute=0),
             count=6,
+            percent=6,
             section_id=marino_track.id,
         )
         marino_track_day1_0530 = Record(
             time=datetime(year=2023, month=1, day=1, hour=5, minute=30),
             count=7,
+            percent=7,
             section_id=marino_track.id,
         )
         marino_track_day1_0600 = Record(
             time=datetime(year=2023, month=1, day=1, hour=6, minute=0),
             count=6,
+            percent=6,
             section_id=marino_track.id,
         )
         marino_track_day1_0630 = Record(
             time=datetime(year=2023, month=1, day=1, hour=6, minute=30),
             count=3,
+            percent=3,
             section_id=marino_track.id,
         )
         marino_track_day1_0700 = Record(
             time=datetime(year=2023, month=1, day=1, hour=7, minute=0),
             count=2,
+            percent=2,
             section_id=marino_track.id,
         )
 
@@ -84,26 +89,31 @@ def main():
         marino_track_day2_0500 = Record(
             time=datetime(year=2023, month=1, day=2, hour=5, minute=0),
             count=3,
+            percent=3,
             section_id=marino_track.id,
         )
         marino_track_day2_0530 = Record(
             time=datetime(year=2023, month=1, day=2, hour=5, minute=30),
             count=10,
+            percent=10,
             section_id=marino_track.id,
         )
         marino_track_day2_0600 = Record(
             time=datetime(year=2023, month=1, day=2, hour=6, minute=0),
             count=16,
+            percent=16,
             section_id=marino_track.id,
         )
         marino_track_day2_0630 = Record(
             time=datetime(year=2023, month=1, day=2, hour=6, minute=30),
             count=13,
+            percent=13,
             section_id=marino_track.id,
         )
         marino_track_day2_0700 = Record(
             time=datetime(year=2023, month=1, day=2, hour=7, minute=0),
             count=5,
+            percent=5,
             section_id=marino_track.id,
         )
 
@@ -111,16 +121,19 @@ def main():
         marino_track_day8_0500 = Record(
             time=datetime(year=2023, month=1, day=8, hour=5, minute=0),
             count=5,
+            percent=5,
             section_id=marino_track.id,
         )
         marino_track_day8_0530 = Record(
             time=datetime(year=2023, month=1, day=8, hour=5, minute=30),
             count=5,
+            percent=5,
             section_id=marino_track.id,
         )
         marino_track_day8_0600 = Record(
             time=datetime(year=2023, month=1, day=8, hour=6, minute=0),
             count=6,
+            percent=6,
             section_id=marino_track.id,
         )
 
@@ -128,16 +141,19 @@ def main():
         marino_track_day9_0500 = Record(
             time=datetime(year=2023, month=1, day=9, hour=5, minute=0),
             count=8,
+            percent=8,
             section_id=marino_track.id,
         )
         marino_track_day9_0530 = Record(
             time=datetime(year=2023, month=1, day=9, hour=5, minute=30),
             count=9,
+            percent=9,
             section_id=marino_track.id,
         )
         marino_track_day9_0600 = Record(
             time=datetime(year=2023, month=1, day=9, hour=6, minute=0),
             count=8,
+            percent=8,
             section_id=marino_track.id,
         )
 

@@ -1,7 +1,10 @@
+from dataclasses import dataclass
 from datetime import datetime
 
 import requests
 from bs4 import BeautifulSoup
+
+from ..util.decode_string import decode_html_string
 
 URL = "https://connect2concepts.com/connect2/?type=circle&key=2A2BE0D8-DF10-4A48-BEDD-B3BC0CD628E7"
 
@@ -14,7 +17,17 @@ def fetch_c2c_html() -> str:
     return req.text
 
 
-def fetch_all_records():
+@dataclass
+class GymCount:
+    """Gym count containing gym name, time, and count"""
+
+    c2c_name: str
+    percent: int
+    count: int
+    time: datetime
+
+
+def fetch_all_records() -> "list[GymCount]":
     soup = BeautifulSoup(fetch_c2c_html(), "html.parser")
 
     charts_div = soup.select_one(".panel-body")
@@ -34,18 +47,18 @@ def fetch_all_records():
         We need "Marino Center - Gymnasium"
         """
 
-        c2c_name = str(elements[3]).split("<br/>")[0].split(">")[1]
+        c2c_name = decode_html_string(str(elements[3]).split("<br/>")[0].split(">")[1])
         count = int(str(elements[3]).split("Last Count: ")[1].split("<br/>")[0])
         time_str = str(elements[3]).split("Updated: ")[1].split("<")[0]
         time = datetime.strptime(time_str, "%m/%d/%Y %I:%M %p")
 
         gym_counts.append(
-            {
-                "c2c_name": c2c_name,
-                "percent": percent_full,
-                "count": count,
-                "time": time,
-            }
+            GymCount(
+                c2c_name=c2c_name,
+                percent=percent_full,
+                count=count,
+                time=time,
+            )
         )
 
     return gym_counts
