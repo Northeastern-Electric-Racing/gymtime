@@ -53,6 +53,25 @@ pscale connect gymtime dev
 
 This makes the `dev` branch accessible as if it were on localhost.
 
+#### Adding gyms to the `main` DB branch
+
+This needs to be run only once:
+
+```bash
+pscale connect gymtime main
+pdm run db-seed-gyms
+```
+
+Once this is done, confirm the data has been added with 
+
+```bash
+pscale shell gymtime main
+
+.show tables;
+select * from gym;
+select * from section;
+```
+
 ## Tests
 
 To run all tests, run
