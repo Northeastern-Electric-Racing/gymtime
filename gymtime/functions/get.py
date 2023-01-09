@@ -29,7 +29,7 @@ def get_average_for_time(
 ) -> float:
     """Get average count in gym section based on records in the last {days_back} days
 
-    day_of_week: Day of week (0 being Sunday)
+    day_of_week: Day of week (1 being Sunday)
     hour: Hour of the day to get the average count
     days_back: Number of days back to find records to use in the average count
     """
@@ -46,8 +46,8 @@ def get_average_for_time(
         statement = (
             select(Record)
             .where(Record.section_id == section_id)
-            # day of week is 1-indexed
-            .where(func.extract("dow", Record.time) == day_of_week)
+            # Day of week is 1-indexed
+            .where(func.DAYOFWEEK(Record.time) == day_of_week)
             .where(func.extract("hour", Record.time) == hour)
         )
         results = session.exec(statement)
