@@ -16,7 +16,6 @@ if args.fetch:
 
     with Session(engine) as session:
         for gym_count in gym_counts:
-            print(gym_count)
             # Find section
             statement = select(Section).where(Section.c2c_name == gym_count.c2c_name)
             results = session.exec(statement)
@@ -34,7 +33,7 @@ if args.fetch:
             last_record = results.first()
 
             if last_record is not None:
-                print("Skipping; this time has already been added")
+                print(f"Skipping `{section.slug}`; this time has already been added")
                 continue
 
             record = Record(
