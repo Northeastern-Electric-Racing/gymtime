@@ -1,0 +1,40 @@
+name: Scrape
+
+on: workflow_dispatch
+
+permissions:
+  contents: read
+
+jobs:
+  build_and_scrape:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.8"
+
+    - name: Install pip and pdm
+      run: |
+        python -m pip install --upgrade pip
+        pip install pdm
+    
+    - name: Install dependencies
+      run: pdm install
+    
+    - name: Confirm env
+      env:
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      run: |
+        env
+        echo confirm:
+        echo ${{ secrets.DATABASE_URL }}
+
+    - name: Scrape
+      env:
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      run: pdm run python -m gymtime -f

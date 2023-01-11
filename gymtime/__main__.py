@@ -45,3 +45,5 @@ if args.fetch:
             session.add(record)
 
             session.commit()
+
+            print("Records added.")
