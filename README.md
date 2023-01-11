@@ -67,10 +67,14 @@ Once this is done, confirm the data has been added with
 ```bash
 pscale shell gymtime main
 
-.show tables;
+show tables;
 select * from gym;
 select * from section;
 ```
+
+### GitHub Actions
+
+Add `DATABASE_URL` to Settings > Secrets and Variables > Actions > Secrets > Repository secrets. Remove the `?sslaccept=strict` from the Planetscale URL.
 
 ## Tests
 
