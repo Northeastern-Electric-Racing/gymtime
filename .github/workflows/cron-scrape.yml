@@ -1,13 +1,14 @@
 name: Scrape
 
-on: workflow_dispatch
+on: 
+  schedule:
+    - cron: "*/30 * * * *"
 
 permissions:
   contents: read
 
 jobs:
-  build_and_scrape:
-
+  scrape:
     runs-on: ubuntu-latest
 
     steps:
