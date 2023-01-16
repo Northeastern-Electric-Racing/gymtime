@@ -27,7 +27,7 @@ def main():
         marino_floor_two = Section(
             gym_id=marino.id,
             slug="marino-floor-two",
-            name="Marino Flour Two",
+            name="Marino Floor Two",
             short_name="Marino F2",
             description="Second Floor",
             c2c_name="Marino Center - 2nd Floor",
@@ -71,14 +71,14 @@ def main():
         session.add(marino_track)
 
         # Add squash sections
-        squash_flour_four = Section(
+        squash_floor_four = Section(
             gym_id=squash.id,
             slug="squash-floor-four",
-            name="Squashbusters Flour Four",
+            name="Squashbusters Floor Four",
             short_name="Squash F4",
             description="Fourth Floor",
             c2c_name="SquashBusters - 4th Floor",
         )
-        session.add(squash_flour_four)
+        session.add(squash_floor_four)
 
         session.commit()

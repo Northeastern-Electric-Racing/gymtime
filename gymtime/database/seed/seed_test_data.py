@@ -39,7 +39,7 @@ def main():
 
         # squash_floor_four = Section(
         #     slug="floor-four",
-        #     name="Flour Four",
+        #     name="Floor Four",
         #     short_name="four",
         #     gym_id=squash.id,
         #     c2c_name="SquashBusters - 4th Floor",
