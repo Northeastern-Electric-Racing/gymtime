@@ -1,10 +1,10 @@
 from argparse import ArgumentParser
+
 from sqlmodel import Session, select
 
-from gymtime.scrape.fetch import fetch_all_records
 from gymtime.database.db import engine
 from gymtime.database.models import Record, Section
-from gymtime.util.round_time import round_hour
+from gymtime.scrape.fetch import fetch_all_records
 
 parser = ArgumentParser(prog="Gym Time", description="Controlling gym time scraping")
 parser.add_argument("-f", "--fetch", action="store_true")
@@ -22,7 +22,8 @@ if args.fetch:
             section = results.one()
 
             # Add record if not already there
-            time = round_hour(gym_count.time)
+            # time = round_hour(gym_count.time)
+            time = gym_count.time
 
             last_record_statement = (
                 select(Record)
