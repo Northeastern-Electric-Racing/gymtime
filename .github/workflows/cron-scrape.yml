@@ -1,8 +1,8 @@
 name: Scrape
 
-on: 
-  schedule:
-    - cron: "*/15 * * * *"
+on: workflow_dispatch
+  # schedule:
+  #   - cron: "*/15 * * * *"
 
 permissions:
   contents: read
