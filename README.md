@@ -85,3 +85,28 @@ pdm run test
 ```
 
 Tests are located in the `test/` folder.
+
+## Other
+
+### Local TZ to UTC
+
+([Credits](https://stackoverflow.com/a/69261133/8677167))
+
+```py
+from datetime import datetime
+
+# We're using 3.8, but zoneinfo was added in 3.9
+from backports.zoneinfo import ZoneInfo
+
+local_tz = ZoneInfo("America/New_York")
+utc_tz = ZoneInfo("UTC")
+
+# Boston time
+est = datetime(year=2023, month=1, day=15, hour=20, minute=30, second=0)
+est = est.replace(tzinfo=local_tz)
+# UTC time
+utc = est.astimezone(utc_tz)
+
+print(est)
+print(utc)
+```

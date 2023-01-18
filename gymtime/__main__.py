@@ -1,10 +1,13 @@
 from argparse import ArgumentParser
+# We're using 3.8, but zoneinfo was added in 3.9
+from backports.zoneinfo import ZoneInfo
 
 from sqlmodel import Session, select
 
 from gymtime.database.db import engine
 from gymtime.database.models import Record, Section
 from gymtime.scrape.fetch import fetch_all_records
+
 
 parser = ArgumentParser(prog="Gym Time", description="Controlling gym time scraping")
 parser.add_argument("-f", "--fetch", action="store_true")
@@ -22,13 +25,18 @@ if args.fetch:
             section = results.one()
 
             # Add record if not already there
-            # time = round_hour(gym_count.time)
-            time = gym_count.time
+            
+            local_tz = ZoneInfo("America/New_York")
+            utc_tz = ZoneInfo("UTC")
+            # The time from C2C is in EST, so convert it to UTC first
+            time_est = gym_count.time
+            time_est = time_est.replace(tzinfo=local_tz)
+            time_utc = time_est.astimezone(utc_tz)
 
             last_record_statement = (
                 select(Record)
                 .where(Record.section_id == section.id)
-                .where(Record.time == time)
+                .where(Record.time == time_utc)
             )
             results = session.exec(last_record_statement)
             last_record = results.first()
@@ -39,7 +47,7 @@ if args.fetch:
 
             record = Record(
                 section_id=section.id,
-                time=time,
+                time=time_utc,
                 count=gym_count.count,
                 percent=gym_count.percent,
             )
