@@ -39,7 +39,8 @@ def fetch_all_records() -> "list[GymCount]":
     gym_counts = []
     for count_div in count_divs:
         elements = list(count_div.select_one("center").children)
-        percent_full = int(round(float(elements[1].attrs["data-percent"])))
+        # data-percent only goes up to 100, but data-lastcount goes over
+        percent_full = int(round(float(elements[1].attrs["data-lastcount"]))) 
 
         """There has to be a prettier way to find the gym name
         HTML:
