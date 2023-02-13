@@ -1,3 +1,11 @@
+# Husker Gym Scraper
+
+> Scraping the live gym counts at https://connect2concepts.com/connect2/?type=circle&key=2A2BE0D8-DF10-4A48-BEDD-B3BC0CD628E7
+
+Check out [husker-nu/husker-gym](https://github.com/husker-nu/husker-gym) for the website.
+
+This project scrapes the Connect2Concepts live counts website every 15 minutes using GitHub Actions, and saves the counts to a database. The data is used for https://husker-gym.vercel.app/
+
 ## Database
 
 ### Create database
