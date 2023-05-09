@@ -6,6 +6,14 @@ Check out [husker-nu/husker-gym](https://github.com/husker-nu/husker-gym) for th
 
 This project scrapes the Connect2Concepts live counts website every 15 minutes using GitHub Actions, and saves the counts to a database. The data is used for https://husker-gym.vercel.app/
 
+## Scrape
+
+Run scrape with 
+
+```bash
+pdm run python -m gymtime -f
+```
+
 ## Database
 
 ### Create database

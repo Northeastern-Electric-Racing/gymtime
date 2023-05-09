@@ -1,4 +1,5 @@
 from argparse import ArgumentParser
+
 # We're using 3.8, but zoneinfo was added in 3.9
 from backports.zoneinfo import ZoneInfo
 
@@ -14,7 +15,6 @@ parser.add_argument("-f", "--fetch", action="store_true")
 args = parser.parse_args()
 
 if args.fetch:
-
     gym_counts = fetch_all_records()
 
     with Session(engine) as session:
@@ -22,10 +22,12 @@ if args.fetch:
             # Find section
             statement = select(Section).where(Section.c2c_name == gym_count.c2c_name)
             results = session.exec(statement)
+            if results:
+                continue
+
             section = results.one()
 
             # Add record if not already there
-            
             local_tz = ZoneInfo("America/New_York")
             utc_tz = ZoneInfo("UTC")
             # The time from C2C is in EST, so convert it to UTC first
