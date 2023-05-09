@@ -22,9 +22,10 @@ if args.fetch:
             # Find section
             statement = select(Section).where(Section.c2c_name == gym_count.c2c_name)
             results = session.exec(statement)
-            if results:
+            if not results:
+                print(f"Section `{gym_count.c2c_name}` not found, skipping")
                 continue
-
+                
             section = results.one()
 
             # Add record if not already there
@@ -57,4 +58,4 @@ if args.fetch:
 
             session.commit()
 
-            print("Records added.")
+            print(f"Records added for `{section.slug}`.")

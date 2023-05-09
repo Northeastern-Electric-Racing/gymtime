@@ -9,3 +9,11 @@ VALUES ('cabot-weight-room', 'Cabot Weight Room', 'Weight Room', 'Cabot Center -
 INSERT INTO section (slug, name, short_name, c2c_name, description, gym_id)
 VALUES ('cabot-basketball-court', 'Cabot Basketball Court', 'Basketball', 'Cabot Center - Basketball Court', 'Basketball Court @ Cabot Center', 3);
 ```
+
+Seems like this made a typo:
+
+```sql
+UPDATE section SET c2c_name = 'Cabot Center - Baseketball Court' WHERE id = 10;
+```
+
+DO NOT tell them about this! It will break the scraping workflow.
