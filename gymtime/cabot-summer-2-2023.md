@@ -17,3 +17,10 @@ UPDATE section SET c2c_name = 'Cabot Center - Baseketball Court' WHERE id = 10;
 ```
 
 DO NOT tell them about this! It will break the scraping workflow.
+
+Adding FTA:
+
+```sql
+INSERT INTO section (slug, name, short_name, c2c_name, description, gym_id)
+VALUES ('squash-fta', 'Squashbusters Functional Training Area', 'Squash FTA', 'Functional Training Area', 'First Floor', 2);
+```
