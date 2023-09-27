@@ -22,10 +22,15 @@ if args.fetch:
 
         for gym_count in gym_counts:
             # Find section
-            statement = select(Section).where(Section.c2c_name == gym_count.c2c_name)
-            results = session.exec(statement)
+            try:
+                statement = select(Section).where(
+                    Section.c2c_name == gym_count.c2c_name
+                )
+                results = session.exec(statement)
 
-            section = results.one()
+                section = results.one()
+            except:
+                continue
 
             # Add record if not already there
             local_tz = ZoneInfo("America/New_York")
@@ -44,9 +49,7 @@ if args.fetch:
             last_record = results.first()
 
             if last_record is not None:
-                print(
-                    f"Skipping `{section.slug}`; this time has already been added"
-                )
+                print(f"Skipping `{section.slug}`; this time has already been added")
                 continue
 
             record = Record(
