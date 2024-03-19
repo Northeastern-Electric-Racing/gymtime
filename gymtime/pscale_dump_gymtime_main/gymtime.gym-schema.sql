@@ -1,0 +1,7 @@
+CREATE TABLE `gym` (
+  `id` INTEGER PRIMARY KEY AUTOINCREMENT,
+  `slug` TEXT NOT NULL,
+  `name` TEXT NOT NULL,
+  `short_name` TEXT NOT NULL,
+  PRIMARY KEY (`id`)
+);

@@ -34,7 +34,7 @@ jobs:
       run: |
         env
         echo confirm:
-        echo ${{ secrets.DATABASE_URL }}
+        echo ${{ secrets.DATABASE_URL }}  
 
     - name: Scrape
       env:
