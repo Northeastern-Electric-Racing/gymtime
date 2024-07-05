@@ -92,6 +92,7 @@ select * from section;
 
 Add `DATABASE_URL` to Settings > Secrets and Variables > Actions > Secrets > Repository secrets. Remove the `?sslaccept=strict` from the Planetscale URL.
 
+
 ## Tests
 
 To run all tests, run
