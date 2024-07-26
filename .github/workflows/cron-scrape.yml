@@ -3,7 +3,7 @@ name: Scrape
 on:
   workflow_dispatch:
   schedule:
-    - cron: "*/50 * * * *"
+    - cron: "*/75 * * * *"
 
 permissions:
   contents: read
