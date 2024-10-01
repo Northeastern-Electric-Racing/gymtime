@@ -127,3 +127,8 @@ utc = est.astimezone(utc_tz)
 print(est)
 print(utc)
 ```
+
+## Contributors
+
+- [Parth Kabra](https://www.parthkabra.me/)
+- ... (more from Northeastern Electric Racing)
