@@ -7,7 +7,8 @@ from bs4 import BeautifulSoup
 from ..util.decode_string import decode_html_string
 
 # URL = "https://connect2concepts.com/connect2/?type=circle&key=2A2BE0D8-DF10-4A48-BEDD-B3BC0CD628E7"
-URL = "http://13.60.202.202/connect2/index.php?type=circle&key=2A2BE0D8-DF10-4A48-BEDD-B3BC0CD628E7"
+# URL = "http://13.60.202.202/connect2/index.php?type=circle&key=2A2BE0D8-DF10-4A48-BEDD-B3BC0CD628E7"
+URL = "https://www.connect2mycloud.com/Widgets/Data/locationCount?type=circle&key=2a2be0d8-df10-4a48-bedd-b3bc0cd628e7&loc_status=false"
 
 
 def fetch_c2c_html() -> str:
