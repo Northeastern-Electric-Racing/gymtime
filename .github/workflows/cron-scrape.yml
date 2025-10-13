@@ -13,22 +13,37 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Check Eastern run window (5:00-23:30 ET)
+      id: timecheck
+      run: |
+        now=$(TZ=America/New_York date +%H:%M)
+        if [[ "$now" < "05:00" || "$now" > "23:30" ]]; then
+          echo "run=false" >> $GITHUB_OUTPUT
+          echo "Outside 5:00-23:30 ET; skipping. Now: $now"
+        else
+          echo "run=true" >> $GITHUB_OUTPUT
+        fi
     - uses: actions/checkout@v3
+      if: steps.timecheck.outputs.run == 'true'
     
     - name: Set up Python 3.8
       uses: actions/setup-python@v3
+      if: steps.timecheck.outputs.run == 'true'
       with:
         python-version: "3.8"
 
     - name: Install pip and pdm
+      if: steps.timecheck.outputs.run == 'true'
       run: |
         python -m pip install --upgrade pip
         pip install pdm
     
     - name: Install dependencies
+      if: steps.timecheck.outputs.run == 'true'
       run: pdm install
     
     - name: Confirm env
+      if: steps.timecheck.outputs.run == 'true'
       env:
         DATABASE_URL: ${{ secrets.DATABASE_URL }}
       run: |
@@ -37,6 +52,7 @@ jobs:
         echo ${{ secrets.DATABASE_URL }}  
 
     - name: Scrape
+      if: steps.timecheck.outputs.run == 'true'
       env:
         DATABASE_URL: ${{ secrets.DATABASE_URL }}
       run: pdm run python -m gymtime -f
